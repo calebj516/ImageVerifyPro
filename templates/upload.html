@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Upload Image{% endblock %}
+
+{% block content %}
+<h2>Upload an Image</h2>
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <input class="form-control" type="file" name="image" accept="image/*">
+    </div>
+    <div class="mb-3">
+        <label for="note" class="form-label">Optional Note</label>
+        <textarea class="form-control" name="note" rows="3" placeholder="Add a note..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Analyze</button>
+    <p class="form-text text-muted">Accepted image formats: .jpg, .png, .heic. Will be resized to 128x128 for analysis.
+    </p>
+</form>
+
+<hr>
+
+<h4 class="mt-4">Or try a sample image:</h4>
+<div class="row">
+    {% for image in sample_images %}
+    <div class="col-md-3 col-sm-4 col-6 mb-3">
+        <form method="POST">
+            <input type="hidden" name="sample_image" value="{{ image }}">
+            <button type="submit" class="btn btn-light w-100 p-0 border">
+                <img src="{{ url_for('static', filename='sample_images/' + image) }}" class="img-fluid"
+                    alt="{{ image }}">
+            </button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}History{% endblock %}
+{% block content %}
+<h2>Prediction History</h2>
+
+{% if predictions %}
+<div class="table-responsive">
+    <table class="table table-bordered align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Image</th>
+                <th>Result</th>
+                <th>Confidence</th>
+                <th>Note</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prediction in predictions %}
+            <tr>
+                <td>
+                    <img src="{{ url_for('static', filename='uploads/' ~ prediction.image_filename) }}"
+                        alt="Uploaded Image" class="img-thumbnail" width="100">
+                </td>
+                <td><strong>{{ prediction.result }}</strong></td>
+                <td>{{ prediction.confidence }}%</td>
+                <td>{{ prediction.note or '—' }}</td>
+                <td>{{ prediction.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No predictions yet.</p>
+{% endif %}
+
+{% endblock %}

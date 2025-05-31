@@ -1,0 +1,16 @@
+flask
+flask-login
+flask-mail
+flask-sqlalchemy
+flask-wtf
+pillow
+numpy
+tensorflow
+gunicorn
+itsdangerous
+werkzeug
+psycopg2-binary
+email-validator
+pillow-heif
+WTforms
+python-dotenv

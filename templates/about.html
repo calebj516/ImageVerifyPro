@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">About the Fake Image Detector</h2>
+    <p class="lead text-center">
+        This web application uses a convolutional neural network (CNN) to classify whether an uploaded image is
+        <strong>AI-generated</strong> or <strong>real</strong>.
+    </p>
+
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Model Accuracy Metrics</h5>
+        </div>
+        <div class="card-body">
+            <p>
+                The model's performance is evaluated using several metrics derived from test data:
+            </p>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">
+                    <strong>Precision:</strong> Proportion of predicted AI-generated images that are truly AI-generated.
+                </li>
+                <li class="list-group-item">
+                    <strong>Recall:</strong> Proportion of all AI-generated images that were correctly identified.
+                </li>
+                <li class="list-group-item">
+                    <strong>F1-score:</strong> A balance between precision and recall, useful for uneven class
+                    distributions.
+                </li>
+                <li class="list-group-item">
+                    <strong>Confusion Matrix:</strong> Summarizes correct vs. incorrect predictions across both classes.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h4 class="mt-5">Evaluation Charts</h4>
+    <p>These charts were generated using test data and represent the model’s classification performance:</p>
+    <div class="row text-center">
+        <div class="col-md-6 mb-4">
+            <h6>Confusion Matrix</h6>
+            <img src="{{ url_for('static', filename='plots/confusion_matrix.png') }}" alt="Confusion Matrix"
+                class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6 mb-4">
+            <h6>Precision by Class</h6>
+            <img src="{{ url_for('static', filename='plots/precision_by_class.png') }}" alt="Precision by Class"
+                class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6 mb-4">
+            <h6>Recall by Class</h6>
+            <img src="{{ url_for('static', filename='plots/recall_by_class.png') }}" alt="Recall by Class"
+                class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6 mb-4">
+            <h6>F1-Score by Class</h6>
+            <img src="{{ url_for('static', filename='plots/f1-score_by_class.png') }}" alt="F1 Score by Class"
+                class="img-fluid rounded shadow-sm">
+        </div>
+    </div>
+
+    <hr class="mt-5">
+
+    <h5 class="mt-4">Dataset Citation</h5>
+    <p class="text-muted">
+        This project uses the CIFAKE dataset from Kaggle:
+        <a href="https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images"
+            target="_blank">
+            CIFAKE: Real and AI Generated Synthetic Images
+        </a>
+        by Birdy654.
+    </p>
+</div>
+{% endblock %}

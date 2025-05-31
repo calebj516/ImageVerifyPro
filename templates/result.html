@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Result{% endblock %}
+{% block content %}
+    <h2>Detection Result</h2>
+    <p><strong>Label:</strong> {{ label }}</p>
+    <p><strong>Confidence:</strong> {{ confidence }}%</p>
+    <img src="{{ image_url }}" class="img-fluid" alt="Uploaded image">
+{% endblock %}
